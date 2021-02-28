@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 8888;
 app.get("/", (req, res) => {
-    res.end("Hello World");
+    var j=res.getHeader();
+    res.end(j);
 });
 
 app.get("/test", (req, res) => {
