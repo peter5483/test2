@@ -4,7 +4,7 @@ let port = process.env.PORT || 8888
 let user_router = require('./routers/main_router.js')
 
 app.get("/", (req, res) => {
-    res.sendFile("./routers/homepage.html")
+    res.render("./routers/homepage.html")
 })
 
 app.use("/user", user_router)
