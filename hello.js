@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 8888;
 app.get("/", (req, res) => {
-    var j=res.getHeader();
+    var j="123"
     res.end(j);
 });
 
