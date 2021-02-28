@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 8888;
 app.get("/", (req, res) => {
-    var j="123"
-    res.links("https://nodejs-app-practice1.herokuapp.com/test")
+    var j="123";
+    res.setHeader("Home Page");
     res.end(j);
 });
 
