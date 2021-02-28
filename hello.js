@@ -1,15 +1,14 @@
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 8888;
-app.get("/", (req, res) => {
-    var j="123";
-    res.end(j);
-});
+let express = require('express');
+let app = express();
+let port = process.env.PORT || 8888
+let user_router = require('./routers/main_router.js')
 
-app.get("/test", (req, res) => {
-    res.end("You are in the /test");
-});
+app.get("/", (req, res) => {
+    res.send("This is main page.");
+})
+
+app.use("/user", user_router)
 
 app.listen(port, () => {
-    console.log(`server listen on port =${port}`)
+    console.log(`server listen on port ${port}`)
 });
