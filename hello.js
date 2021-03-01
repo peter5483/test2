@@ -55,6 +55,10 @@ let holo = {
         ["戌神沁音/戌神ころね"]
     ]
 }
+
+let hololive ={
+    "TokinoSora":"時乃空/ときのそら"
+}
 app.get("/", (req, res) => {
     let options = {
         root: __dirname,
@@ -76,7 +80,12 @@ app.get("/", (req, res) => {
 
 app.get("/:name", (req, res) => {
     var name=req.params.name;
-    res.end(name);
+    try{
+        res.end(hololive[name]);
+    }
+    catch(name){
+        res.end("<h1>Cannot Found "+name+"</h1>");
+    }
 })
 
 
