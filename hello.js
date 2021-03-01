@@ -84,9 +84,6 @@ let hololive ={
     "TokinoSora":"時乃空/ときのそら"
 }
 app.get("/", (req, res) => {
-    res.writeHead(200, {
-        'Content-Type': 'text/plain; charset=utf-8'
-    });
     let options = {
         root: __dirname,
         dotfiles: 'deny'
