@@ -74,7 +74,11 @@ app.get("/", (req, res) => {
     // res.end(str);
 })
 
-app.use("/user", user_router)
+app.get("/:name", (req, res) => {
+    var name=req.params.name;
+    res.end(name);
+})
+
 
 app.listen(port, () => {
     console.log(`server listen on port ${port}`)
