@@ -16,6 +16,14 @@ function encodeUtf8(text) {
     }
     return bytes;
 }
+
+function decodeUtf8(bytes) {
+    var encoded = "";
+    for (var i = 0; i < bytes.length; i++) {
+        encoded += '%' + bytes[i].toString(16);
+    }
+    return decodeURIComponent(encoded);
+}
 // Number of periods(0,1,2,3,4,5,6), "https://www.youtube.com/channel/UCp6993wxpyDPHUpavwDFqgg", "https://yt3.ggpht.com/ytc/AAUvwngZmr_qbKhGIvHaHwLRmKhKxdeFfM7ZbK316vFNSw=s88-c-k-c0x00ffffff-no-rj", "https://twitter.com/tokino_sora","https://upload.wikimedia.org/wikipedia/zh/9/9f/Twitter_bird_logo_2012.svg"
     // name, youtube, imgYoutube, twitter, imgTwitter
 
@@ -97,7 +105,8 @@ app.get("/", (req, res) => {
 app.get("/:name", (req, res) => {
     var name=req.params.name;
     if(name in hololive){
-        res.end(encodeUtf8(hololive[name]));
+        req.setEncoding('utf8');
+        res.end(hololive[name]);
     }
     else{
         res.end("<h1>Cannot Found "+name+"</h1>");
