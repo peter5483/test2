@@ -12,7 +12,8 @@ app.get("/", (req, res) => {
 })
 
 app.get("/test", (req, res) => {
-    res.end("<h1>123</h1>")
+    var h="holo";
+    res.render("./routers/test.html",{layout: false,nickname:h})
 })
 
 app.use("/user", user_router)
