@@ -56,22 +56,22 @@ let holo = {
     ]
 }
 app.get("/", (req, res) => {
-    // let options = {
-    //     root: __dirname,
-    //     dotfiles: 'deny'
-    // }
-    // res.sendFile("./routers/homepage.html", options)
-    var str="<meta charset=\"utf-8\"><body>";
-    for(let period in holo){
-        str+="<h3>"+period+'</h3>';
-        for(var vtb in holo[period]){
-            for(var i=0;i<1;i++){
-                str+=" <h4>"+vtb[i]+"</h4>"
-            }
-        }
+    let options = {
+        root: __dirname,
+        dotfiles: 'deny'
     }
-    str+="</body>"
-    res.end(str);
+    res.sendFile("./routers/homepage.html", options)
+    // var str="<body>";
+    // for(let period in holo){
+    //     str+="<h3>"+period+'</h3>';
+    //     for(var vtb in holo[period]){
+    //         for(var i=0;i<1;i++){
+    //             str+=" <h4>"+vtb[i]+"</h4>"
+    //         }
+    //     }
+    // }
+    // str+="</body>"
+    // res.end(str);
 })
 
 app.use("/user", user_router)
