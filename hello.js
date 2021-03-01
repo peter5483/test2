@@ -2,8 +2,24 @@ let express = require('express');
 let app = express();
 let port = process.env.PORT || 8888
 let user_router = require('./routers/main_router.js')
+function encodeUtf8(text) {
+    const code = encodeURIComponent(text);
+    const bytes = [];
+    for (var i = 0; i < code.length; i++) {
+        const c = code.charAt(i);
+        if (c === '%') {
+            const hex = code.charAt(i + 1) + code.charAt(i + 2);
+            const hexVal = parseInt(hex, 16);
+            bytes.push(hexVal);
+            i += 2;
+        } else bytes.push(c.charCodeAt(0));
+    }
+    return bytes;
+}
 // Number of periods(0,1,2,3,4,5,6), "https://www.youtube.com/channel/UCp6993wxpyDPHUpavwDFqgg", "https://yt3.ggpht.com/ytc/AAUvwngZmr_qbKhGIvHaHwLRmKhKxdeFfM7ZbK316vFNSw=s88-c-k-c0x00ffffff-no-rj", "https://twitter.com/tokino_sora","https://upload.wikimedia.org/wikipedia/zh/9/9f/Twitter_bird_logo_2012.svg"
     // name, youtube, imgYoutube, twitter, imgTwitter
+
+
 let holo = {
     "CEO":[
         ["Yagoo"]
@@ -80,7 +96,7 @@ app.get("/", (req, res) => {
 
 app.get("/:name", (req, res) => {
     var name=req.params.name;
-    if(hololive[name]!=""){
+    if(name in hololive){
         res.end(hololive[name]);
     }
     else{
