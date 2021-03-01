@@ -70,7 +70,7 @@ app.get("/", (req, res) => {
             }
         }
     }
-    res.end(str);
+    res.end("<h1>123</h1>");
 })
 
 app.use("/user", user_router)
