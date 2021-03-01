@@ -11,6 +11,10 @@ app.get("/", (req, res) => {
     res.sendFile("./routers/homepage.html", options)
 })
 
+app.get("/test", (req, res) => {
+    res.end("<h1>123</h1>")
+})
+
 app.use("/user", user_router)
 
 app.listen(port, () => {
