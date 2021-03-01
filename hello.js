@@ -61,16 +61,17 @@ app.get("/", (req, res) => {
     //     dotfiles: 'deny'
     // }
     // res.sendFile("./routers/homepage.html", options)
-    var str="";
+    var str="<body>\n";
     for(let period in holo){
-        str+=period+'<br>';
-        for(var name in holo[period]){
+        str+="<h3>"+period+'</h3><br>';
+        for(var vtb in holo[period]){
             for(var i=0;i<1;i++){
-                str+="\t"+name[i]+"<br>"
+                str+=" <h4>"+vtb[i]+"</h4><br>"
             }
         }
     }
-    res.end("<h1>123</h1>");
+    str+="</body>"
+    res.end(str);
 })
 
 app.use("/user", user_router)
