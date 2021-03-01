@@ -84,6 +84,9 @@ let hololive ={
     "TokinoSora":"時乃空/ときのそら"
 }
 app.get("/", (req, res) => {
+    res.writeHead(200, {
+        'Content-Type': 'text/plain; charset=utf-8'
+    });
     let options = {
         root: __dirname,
         dotfiles: 'deny'
@@ -103,9 +106,11 @@ app.get("/", (req, res) => {
 })
 
 app.get("/:name", (req, res) => {
+    res.writeHead(200, {
+        'Content-Type': 'text/plain; charset=utf-8'
+    });
     var name=req.params.name;
     if(name in hololive){
-        req.setEncoding('utf8');
         res.end(hololive[name]);
     }
     else{
