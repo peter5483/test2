@@ -97,7 +97,7 @@ app.get("/", (req, res) => {
 app.get("/:name", (req, res) => {
     var name=req.params.name;
     if(name in hololive){
-        res.end(hololive[name]);
+        res.end(encodeUtf8(hololive[name]));
     }
     else{
         res.end("<h1>Cannot Found "+name+"</h1>");
