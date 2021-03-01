@@ -6,7 +6,7 @@ let user_router = require('./routers/main_router.js')
     // name, youtube, imgYoutube, twitter, imgTwitter
 let holo = {
     "CEO":[
-        "Yagoo"
+        ["Yagoo"]
     ],
     "零期生":[
         ["時乃空/ときのそら"],
@@ -64,8 +64,10 @@ app.get("/", (req, res) => {
     var str="";
     for(let period in holo){
         str+=period+'<br>';
-        for(var i=0;i<1;i++){
-            str+="\t"+holo[period][i]+"<br>"
+        for(var name in holo[period]){
+            for(var i=0;i<1;i++){
+                str+="\t"+name[i]+"<br>"
+            }
         }
     }
     res.end(str);
