@@ -83,8 +83,8 @@ app.get("/:name", (req, res) => {
     try{
         res.end(hololive[name]);
     }
-    catch(name){
-        res.end("<h1>Cannot Found </h1>");
+    catch(e){
+        res.end("<h1>Cannot Found</h1>");
     }
 })
 
