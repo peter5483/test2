@@ -80,11 +80,11 @@ app.get("/", (req, res) => {
 
 app.get("/:name", (req, res) => {
     var name=req.params.name;
-    try{
+    if(hololive[name]!=""){
         res.end(hololive[name]);
     }
-    catch(e){
-        res.end("<h1>Cannot Found</h1>");
+    else{
+        res.end("<h1>Cannot Found "+name+"</h1>");
     }
 })
 
